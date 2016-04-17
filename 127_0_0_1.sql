@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 15 Apr 2016 pada 16.49
+-- Generation Time: 17 Apr 2016 pada 16.28
 -- Versi Server: 5.5.39
 -- PHP Version: 5.4.31
 
@@ -36,9 +36,25 @@ CREATE TABLE IF NOT EXISTS `kurir` (
 --
 
 INSERT INTO `kurir` (`id_pesanan`, `deskripsi`) VALUES
-(1, 'ahahay'),
-(1, 'asdsad'),
-(8, 'asdasd');
+(12, 'Bawa Beras');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `orderpesanan`
+--
+
+CREATE TABLE IF NOT EXISTS `orderpesanan` (
+  `id_pesanan` int(9) DEFAULT NULL,
+  `id_pengemudi` int(5) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `orderpesanan`
+--
+
+INSERT INTO `orderpesanan` (`id_pesanan`, `id_pengemudi`) VALUES
+(11, 1);
 
 -- --------------------------------------------------------
 
@@ -53,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `pelanggan` (
   `username` varchar(50) NOT NULL,
   `password` varchar(60) NOT NULL,
   `alamat` text NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data untuk tabel `pelanggan`
@@ -62,7 +78,8 @@ CREATE TABLE IF NOT EXISTS `pelanggan` (
 INSERT INTO `pelanggan` (`id_pelanggan`, `nama`, `no_telepon`, `username`, `password`, `alamat`) VALUES
 (1, 'asd', '4232', 'asd', 'asd', 'asd'),
 (2, 'Hafidh Fikri Rasyid', '8996024140', 'hafidhfikri', 'sitampan', 'gg. atmawigena no.82'),
-(3, 'zahra', '82240203631', 'zahra1234', 'zahra1234', 'sukabirus');
+(3, 'zahra', '82240203631', 'zahra1234', 'zahra1234', 'sukabirus'),
+(4, 'Iqbal Maulana', '899644564', 'iqbalmlna', 'iqbal', 'sukapura');
 
 -- --------------------------------------------------------
 
@@ -98,22 +115,17 @@ CREATE TABLE IF NOT EXISTS `pesanan` (
   `tujuan` varchar(40) NOT NULL,
   `tarif` int(11) NOT NULL,
   `jarak` int(4) NOT NULL,
-  `status` varchar(19) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+  `status` varchar(19) NOT NULL,
+  `kategori` varchar(25) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data untuk tabel `pesanan`
 --
 
-INSERT INTO `pesanan` (`id_pesanan`, `id_pelanggan`, `asal`, `tujuan`, `tarif`, `jarak`, `status`) VALUES
-(1, 2, 'Dago', 'Riau', 60000, 0, 'Pending'),
-(2, 2, 'Dago', 'Riau', 60000, 0, 'Pending'),
-(3, 2, 'Dago', 'Riau', 60000, 15, 'Pending'),
-(4, 2, 'Dago', 'Riau', 60000, 15, 'Pending'),
-(5, 2, 'Dago', 'Riau', 0, 15, 'Pending'),
-(6, 2, 'Dago', 'Riau', 65000, 15, 'Pending'),
-(7, 2, 'Dago', 'Riau', 65000, 15, 'Pending'),
-(8, 2, 'Dago', 'Riau', 65000, 15, 'Pending');
+INSERT INTO `pesanan` (`id_pesanan`, `id_pelanggan`, `asal`, `tujuan`, `tarif`, `jarak`, `status`, `kategori`) VALUES
+(11, 2, 'Dago', 'Riau', 60000, 15, 'Taken', 'Transport'),
+(12, 2, 'Dago', 'Riau', 65000, 15, 'Pending', 'Kurir');
 
 --
 -- Indexes for dumped tables
@@ -124,6 +136,12 @@ INSERT INTO `pesanan` (`id_pesanan`, `id_pelanggan`, `asal`, `tujuan`, `tarif`, 
 --
 ALTER TABLE `kurir`
  ADD KEY `fkKurir` (`id_pesanan`);
+
+--
+-- Indexes for table `orderpesanan`
+--
+ALTER TABLE `orderpesanan`
+ ADD KEY `fkPesananSiap` (`id_pesanan`), ADD KEY `fkPengemudi` (`id_pengemudi`);
 
 --
 -- Indexes for table `pelanggan`
@@ -151,7 +169,7 @@ ALTER TABLE `pesanan`
 -- AUTO_INCREMENT for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-MODIFY `id_pelanggan` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `id_pelanggan` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `pengemudi`
 --
@@ -161,7 +179,7 @@ MODIFY `id_pengemudi` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT for table `pesanan`
 --
 ALTER TABLE `pesanan`
-MODIFY `id_pesanan` int(9) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+MODIFY `id_pesanan` int(9) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
@@ -171,6 +189,13 @@ MODIFY `id_pesanan` int(9) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 ALTER TABLE `kurir`
 ADD CONSTRAINT `fkKurir` FOREIGN KEY (`id_pesanan`) REFERENCES `pesanan` (`id_pesanan`);
+
+--
+-- Ketidakleluasaan untuk tabel `orderpesanan`
+--
+ALTER TABLE `orderpesanan`
+ADD CONSTRAINT `fkPesananSiap` FOREIGN KEY (`id_pesanan`) REFERENCES `pesanan` (`id_pesanan`),
+ADD CONSTRAINT `fkPengemudi` FOREIGN KEY (`id_pengemudi`) REFERENCES `pengemudi` (`id_pengemudi`);
 
 --
 -- Ketidakleluasaan untuk tabel `pesanan`
