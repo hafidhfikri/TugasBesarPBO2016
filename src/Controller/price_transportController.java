@@ -42,13 +42,13 @@ public class price_transportController implements ActionListener{
             p.setJarak(jarak);
             pm.createPesanan(p, this.p.getId_pelanggan());
             JOptionPane.showMessageDialog(pt,"Order Pick Up Berhasil Dilakukan");
-            new MenuPelangganController();
+            new MenuPelangganController(this.p);
             pt.dispose();
         }
         else if(e == pt.getBtnCancel())
         {
             JOptionPane.showMessageDialog(pt,"Order Pick Up Dibatalkan");
-            new MenuPelangganController();
+            new MenuPelangganController(p);
             pt.dispose();
         }
     }

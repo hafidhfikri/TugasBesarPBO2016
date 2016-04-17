@@ -32,17 +32,11 @@ public class Console {
     public void addPelanggan(String nama, long no_telp, String alamat_pelanggan, long id_pelanggan,String username,String password) throws IOException{
         Pelanggan tmp_pelanggan = new Pelanggan(nama,no_telp,alamat_pelanggan,id_pelanggan,username,password);
         daftarPelanggan.add(tmp_pelanggan);
-        
-        serial = new Serial(file_pelanggan);
-        serial.writeObject(daftarPelanggan);
     }
     
     public void addPengemudi(String nama, long no_telp, long id_pengemudi,String username,String password) throws IOException{
         Pengemudi tmp_pengemudi = new Pengemudi(nama,no_telp,id_pengemudi,username,password);
         daftarPengemudi.add(tmp_pengemudi);
-        
-        serial = new Serial(file_pengemudi);
-        serial.writeObject(daftarPengemudi);
     }
     
     public Pengemudi getPengemudi(long idPengemudi){
@@ -268,7 +262,7 @@ public class Console {
             return null;
         }
     }
-    
+    /*
     public void refreshListPengemudi() throws Exception{
         serial = new Serial(file_pengemudi);
         
@@ -280,7 +274,7 @@ public class Console {
         
         daftarPelanggan = (List<Pelanggan>)serial.readObject();
     }
-    
+    */
     public void MainMenu() throws Exception{
         boolean jalan = true;
         boolean jl = true;
@@ -293,8 +287,6 @@ public class Console {
         long jon;
         
         while(jalan){
-           refreshListPelanggan();
-           refreshListPengemudi();
             
            System.out.println("Selamat datang di aplikasi transportasi online");
            System.out.println("1. Login");

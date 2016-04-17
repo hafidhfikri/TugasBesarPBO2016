@@ -30,10 +30,10 @@ public class price_pengemudi extends javax.swing.JFrame {
     private void initComponents() {
 
         btnOrder = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        txtTarif = new javax.swing.JTextField();
+        txtTujuan = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        jTextField2 = new javax.swing.JTextField();
+        TxtAsal = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         btnCancel = new javax.swing.JButton();
@@ -43,9 +43,9 @@ public class price_pengemudi extends javax.swing.JFrame {
         btnOrder.setFont(new java.awt.Font("Hobo Std", 0, 14)); // NOI18N
         btnOrder.setText("ORDER");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        TxtAsal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                TxtAsalActionPerformed(evt);
             }
         });
 
@@ -68,13 +68,10 @@ public class price_pengemudi extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnCancel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnOrder)))
-                .addGap(124, 124, 124))
+                .addComponent(btnCancel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnOrder)
+                .addGap(113, 113, 113))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -83,12 +80,16 @@ public class price_pengemudi extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(119, 119, 119)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                            .addComponent(jTextField3)))
+                            .addComponent(TxtAsal, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                            .addComponent(txtTujuan)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(192, 192, 192)
                         .addComponent(jLabel2)))
                 .addContainerGap(69, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtTarif, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(112, 112, 112))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,15 +97,15 @@ public class price_pengemudi extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(25, 25, 25)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TxtAsal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTujuan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTarif, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnOrder)
@@ -115,9 +116,9 @@ public class price_pengemudi extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void TxtAsalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtAsalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_TxtAsalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,14 +159,14 @@ public class price_pengemudi extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField TxtAsal;
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnOrder;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField txtTarif;
+    private javax.swing.JTextField txtTujuan;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -185,5 +186,47 @@ public class price_pengemudi extends javax.swing.JFrame {
     {
         btnOrder.addActionListener(e);
         btnCancel.addActionListener(e);
+    }
+
+    /**
+     * @return the TxtAsal
+     */
+    public javax.swing.JTextField getTxtAsal() {
+        return TxtAsal;
+    }
+
+    /**
+     * @param TxtAsal the TxtAsal to set
+     */
+    public void setTxtAsal(javax.swing.JTextField TxtAsal) {
+        this.TxtAsal = TxtAsal;
+    }
+
+    /**
+     * @return the txtTarif
+     */
+    public javax.swing.JTextField getTxtTarif() {
+        return txtTarif;
+    }
+
+    /**
+     * @param txtTarif the txtTarif to set
+     */
+    public void setTxtTarif(javax.swing.JTextField txtTarif) {
+        this.txtTarif = txtTarif;
+    }
+
+    /**
+     * @return the txtTujuan
+     */
+    public javax.swing.JTextField getTxtTujuan() {
+        return txtTujuan;
+    }
+
+    /**
+     * @param txtTujuan the txtTujuan to set
+     */
+    public void setTxtTujuan(javax.swing.JTextField txtTujuan) {
+        this.txtTujuan = txtTujuan;
     }
 }

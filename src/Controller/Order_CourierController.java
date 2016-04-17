@@ -42,7 +42,7 @@ public class Order_CourierController implements ActionListener{
         else if (e == oc.getBtnBack())
         {
             System.out.println("Order Dibatalkan");
-            new MenuPelangganController();
+            new MenuPelangganController(p);
         }
     }
     

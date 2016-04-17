@@ -47,7 +47,7 @@ public class price_courierController implements ActionListener{
         else if(e == pc.getBtnCancel())
         {
             JOptionPane.showMessageDialog(pc,"Order Courier Dibatalkan");
-            new MenuPelangganController();
+            new MenuPelangganController(p);
             pc.dispose();
         }
     }

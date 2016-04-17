@@ -5,9 +5,13 @@
  */
 package Controller;
 
+import Model.PengemudiModel;
 import View.MenuPengemudi;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
@@ -23,28 +27,13 @@ public class MenuPengemudiController extends JTable implements ActionListener {
     private Pengemudi pe;
     JTable tabel;
 
-    public MenuPengemudiController(Pengemudi p) {
-        viMenPe = new MenuPengemudi();
+    public MenuPengemudiController(Pengemudi p) throws SQLException {
+        PengemudiModel pm = new PengemudiModel();
+        viMenPe = new MenuPengemudi(pm.getPesanan());
         viMenPe.setVisible(true);
         viMenPe.addListener(this);
         
         pe = p;
-        
-        Object tes[][] = {{"a","a","a","a","a","a"},
-            {"a","a","a","a","a","a"},
-        };
-        
-        String judulKolom[] = {
-            "Nomor Pesanan",
-            "Category",
-            "Origin",
-            "Destination",
-            "Phone Number",
-            "Status"
-        };
-        
-        tabel = new JTable(tes, judulKolom);
-        viMenPe.setTblOrder(tabel);
     }
 
     @Override
@@ -57,7 +46,12 @@ public class MenuPengemudiController extends JTable implements ActionListener {
                 JOptionPane.showMessageDialog(viMenPe,"Masukan ID pesanan !!!");
             }
             else{
-                new price_pengemudiController(pe);
+                String id_pesanan = viMenPe.getTxtinputid().getText();
+                try {
+                    new price_pengemudiController(pe,id_pesanan);
+                } catch (SQLException ex) {
+                    System.err.println("Data Error");       
+                }
                 viMenPe.dispose();
             }
 

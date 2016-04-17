@@ -6,6 +6,7 @@
 package View;
 
 import java.awt.event.ActionListener;
+import java.util.Vector;
 import javax.swing.JTable;
 
 /**
@@ -13,11 +14,21 @@ import javax.swing.JTable;
  * @author Hafidh Fikri Rasyid
  */
 public class MenuPengemudi extends javax.swing.JFrame {
-
+    private Vector<Vector<String>> pesananVektor = new Vector<Vector<String>>();
+    private Vector<String> header; 
     /**
      * Creates new form MenuPengemudi
      */
-    public MenuPengemudi() {
+    public MenuPengemudi(Vector p) {
+        
+        header = new Vector<String>();
+        header.add("Order ID"); 
+        header.add("Category"); 
+        header.add("Origin"); 
+        header.add("Destination");
+        header.add("Phone Number");
+        header.add("Status");
+        pesananVektor = p;
         initComponents();
     }
 
@@ -44,16 +55,7 @@ public class MenuPengemudi extends javax.swing.JFrame {
         jLabel1.setText("TRANSPORTASI ONLINE");
 
         tblOrder.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "ID", "Category", "Origin", "Destination", "Phone Number", "Status"
-            }
+            pesananVektor,header
         ));
         jScrollPane1.setViewportView(tblOrder);
 
@@ -117,37 +119,6 @@ public class MenuPengemudi extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuPengemudi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuPengemudi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuPengemudi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenuPengemudi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MenuPengemudi().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogout;

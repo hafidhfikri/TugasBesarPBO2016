@@ -30,12 +30,6 @@ public class MenuPelangganController implements ActionListener {
         System.out.println(p.getId_pelanggan());
     }
     
-    public MenuPelangganController() {
-        menPelView = new MenuPelanggan();
-        menPelView.setVisible(true);
-        menPelView.addListener(this);
-    }
-
     @Override
     public void actionPerformed(ActionEvent ae) {
         Object e = ae.getSource();

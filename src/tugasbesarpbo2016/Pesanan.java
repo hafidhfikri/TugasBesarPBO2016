@@ -31,6 +31,9 @@ public class Pesanan {
         this.Status = Status;
         this.jarak = jarak;
     }
+
+    public Pesanan() {
+    }
         
     public void createTarif(int jenis) {
         this.jenis = jenis;

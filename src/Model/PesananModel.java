@@ -26,7 +26,7 @@ public class PesananModel {
     public void createPesanan(Pesanan p, long id_pelanggan){
         try{
             stmt = conn.getConn().createStatement();
-            String query = "Insert into pesanan (id_pelanggan,asal,tujuan,tarif,jarak,status) values("+id_pelanggan+",'"+p.getAlamat_asal()+"','"+p.getAlamat_tujuan()+"',"+p.getTarif()+","+p.getJarak()+",'"+p.getStatus()+"');";
+            String query = "Insert into pesanan (id_pelanggan,asal,tujuan,tarif,jarak,status,kategori) values("+id_pelanggan+",'"+p.getAlamat_asal()+"','"+p.getAlamat_tujuan()+"',"+p.getTarif()+","+p.getJarak()+",'"+p.getStatus()+"','Transport');";
             System.out.println(query);
             stmt.executeUpdate(query);
         }catch(SQLException e){
@@ -38,7 +38,7 @@ public class PesananModel {
         String id_pes = null;
         try{
             stmt = conn.getConn().createStatement();
-            String query = "Insert into pesanan (id_pelanggan,asal,tujuan,tarif,jarak,status) values("+id_pelanggan+",'"+p.getAlamat_asal()+"','"+p.getAlamat_tujuan()+"',"+p.getTarif()+","+p.getJarak()+",'"+p.getStatus()+"');";
+            String query = "Insert into pesanan (id_pelanggan,asal,tujuan,tarif,jarak,status,kategori) values("+id_pelanggan+",'"+p.getAlamat_asal()+"','"+p.getAlamat_tujuan()+"',"+p.getTarif()+","+p.getJarak()+",'"+p.getStatus()+"','Kurir');";
             System.out.println(query);
             stmt.executeUpdate(query);
             //ambil id dan bikin di tabel kurir
