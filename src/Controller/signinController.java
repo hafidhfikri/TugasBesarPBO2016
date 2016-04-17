@@ -27,7 +27,7 @@ public class signinController implements ActionListener{
         Object e = ae.getSource();
         if (e == s.getLogin())
         {
-            if ((s.getTxtusername().getText().isEmpty()) && s.getTxtPass().getText().isEmpty())
+            if ((s.getTxtusername().getText().isEmpty()) || s.getTxtPass().getText().isEmpty())
             {
                 JOptionPane.showMessageDialog(s, "Data Pengguna tidak boleh kosong");
             }
@@ -37,8 +37,9 @@ public class signinController implements ActionListener{
                 try {
                     log = pm.cekPelanggan(s.getTxtusername().getText(), s.getTxtPass().getText());
                 } catch (SQLException ex) {
-                    Logger.getLogger(signinController.class.getName()).log(Level.SEVERE, null, ex);
+                    System.err.println("Login gagal");
                 }
+                System.out.println(log);
                 if(log){
                     System.out.println("Proses Pilih Menu");
                     JOptionPane.showMessageDialog(s,"Log In Berhasil Dilakukan");

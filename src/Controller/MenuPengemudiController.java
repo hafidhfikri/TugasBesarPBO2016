@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import javax.swing.JTable;
 import tugasbesarpbo2016.Pengemudi;
+import tugasbesarpbo2016.Pesanan;
 
 /**
  *
@@ -25,10 +26,13 @@ import tugasbesarpbo2016.Pengemudi;
 public class MenuPengemudiController extends JTable implements ActionListener {
     MenuPengemudi viMenPe;
     private Pengemudi pe;
+    private Pesanan ps;
+    private PengemudiModel pm;
     JTable tabel;
 
     public MenuPengemudiController(Pengemudi p) throws SQLException {
-        PengemudiModel pm = new PengemudiModel();
+         pm = new PengemudiModel();
+        ps = new Pesanan();
         viMenPe = new MenuPengemudi(pm.getPesanan());
         viMenPe.setVisible(true);
         viMenPe.addListener(this);
@@ -48,11 +52,18 @@ public class MenuPengemudiController extends JTable implements ActionListener {
             else{
                 String id_pesanan = viMenPe.getTxtinputid().getText();
                 try {
-                    new price_pengemudiController(pe,id_pesanan);
+                    ps = pm.getDetilPesanan(id_pesanan);
+                    if(ps != null){
+                         new price_pengemudiController(pe,id_pesanan);
+                        viMenPe.dispose();
+                    }else{
+                        JOptionPane.showMessageDialog(viMenPe,"ID yang anda masukkan salah !");
+                    }  
                 } catch (SQLException ex) {
                     System.err.println("Data Error");       
+                }catch (java.lang.NullPointerException ea){
+                    JOptionPane.showMessageDialog(viMenPe,"ID yang anda masukkan salah !");
                 }
-                viMenPe.dispose();
             }
 
         }

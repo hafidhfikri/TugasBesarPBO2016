@@ -25,7 +25,7 @@ public class sign_pengemudiController implements ActionListener{
         Object e = ae.getSource();
         if (e == sp.getBtnlogin())
         {
-            if (sp.getTxtusername().getText().isEmpty() && sp.getTxtPass().getText().isEmpty())
+            if (sp.getTxtusername().getText().isEmpty() || sp.getTxtPass().getText().isEmpty())
             {
                 JOptionPane.showMessageDialog(sp,"Data Pengemudi Tidak Boleh Kosong");
             }else 
@@ -34,7 +34,8 @@ public class sign_pengemudiController implements ActionListener{
                  try {
                     log = pm.cekPengemudi(sp.getTxtusername().getText(), sp.getTxtPass().getText());
                 } catch (SQLException ex) {
-                     System.err.println(ex);                }
+                     System.err.println(ex);                
+                }
                 if(log){
                     System.out.println("Proses Pilih Menu");
                     JOptionPane.showMessageDialog(sp,"Log In Pengemudi Berhasil Dilakukan");

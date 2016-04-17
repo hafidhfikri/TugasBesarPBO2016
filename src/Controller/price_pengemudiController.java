@@ -51,9 +51,10 @@ public class price_pengemudiController implements ActionListener{
         {
             try {  
                 new MenuPengemudiController(pe);
+                pp.dispose();
             } catch (SQLException ex) {
                 System.err.println("Data error");   
-            }
+            } 
         }
         
     }

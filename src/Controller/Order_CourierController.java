@@ -26,7 +26,7 @@ public class Order_CourierController implements ActionListener{
         Object e = ae.getSource();
         if (e == oc.getBtnNext())
         {
-            if (oc.getTxtfrom().getText().isEmpty() && oc.getTxtTo().getText().isEmpty() && oc.getTxtdesc().getText().isEmpty())
+            if (oc.getTxtfrom().getText().isEmpty() || oc.getTxtTo().getText().isEmpty() || oc.getTxtdesc().getText().isEmpty())
             {
                 JOptionPane.showMessageDialog(oc,"Data Pesanan Tidak Boleh Kosong");
             }

@@ -73,15 +73,19 @@ public class PengemudiModel {
     public Pesanan getDetilPesanan(String id) throws SQLException{
         Pesanan p = new Pesanan();
         stmt = conn.getConn().createStatement();
-        String query = "select * from pesanan where id_pesanan = "+id;
-        ResultSet rs = stmt.executeQuery(query);
-        if (rs != null && rs.next()) {
-            p.setId_pesanan(rs.getInt(1));
-            p.setAlamat_asal(rs.getString(3));
-            p.setAlamat_tujuan(rs.getString(4));
-            p.setTarif(rs.getInt(5));
-           return p;
-        }
+        try{
+             String query = "select * from pesanan where id_pesanan = "+id;
+            ResultSet rs = stmt.executeQuery(query);
+            if (rs != null && rs.next()) {
+                p.setId_pesanan(rs.getInt(1));
+                p.setAlamat_asal(rs.getString(3));
+                p.setAlamat_tujuan(rs.getString(4));
+                p.setTarif(rs.getInt(5));
+            return p;
+            }     
+        }catch(java.lang.NullPointerException ea){
+            System.err.println("ID tidak ditemukan");
+        }   
         return null;
     }
     

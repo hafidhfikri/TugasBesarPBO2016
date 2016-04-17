@@ -25,7 +25,7 @@ public class signupController implements ActionListener{
     public void actionPerformed(ActionEvent ae) {
         Object e = ae.getSource();
         if (e == su.getBtnsignup()) {
-            if ((su.getTxtname().getText().isEmpty()) && (su.getTxtPass().getText().isEmpty()) && (su.getTxtusername().getText().isEmpty()) && (su.getTxtphone().getText().isEmpty()))
+            if ((su.getTxtname().getText().isEmpty()) || (su.getTxtPass().getText().isEmpty()) || (su.getTxtusername().getText().isEmpty()) || (su.getTxtphone().getText().isEmpty()))
             {
                 JOptionPane.showMessageDialog(su, "Data Pengguna tidak boleh kosong");
             }

@@ -25,7 +25,7 @@ public class Order_TransportasiController implements ActionListener{
         Object e  = ae.getSource();
         if (e == ot.getBtnNext())
         {
-            if (ot.getTxtFrom().getText().isEmpty() && ot.getTxtTo().getText().isEmpty())
+            if (ot.getTxtFrom().getText().isEmpty() || ot.getTxtTo().getText().isEmpty())
             {
                 JOptionPane.showMessageDialog(ot,"Asal dan tempat tujuan tidak boleh kosong");
             }
