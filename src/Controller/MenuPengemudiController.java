@@ -31,7 +31,7 @@ public class MenuPengemudiController extends JTable implements ActionListener {
     JTable tabel;
 
     public MenuPengemudiController(Pengemudi p) throws SQLException {
-         pm = new PengemudiModel();
+        pm = new PengemudiModel();
         ps = new Pesanan();
         viMenPe = new MenuPengemudi(pm.getPesanan());
         viMenPe.setVisible(true);

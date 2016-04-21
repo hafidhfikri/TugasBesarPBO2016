@@ -74,14 +74,16 @@ public class PengemudiModel {
         Pesanan p = new Pesanan();
         stmt = conn.getConn().createStatement();
         try{
-             String query = "select * from pesanan where id_pesanan = "+id;
+            String query = "select * from pesanan where id_pesanan = "+id;
             ResultSet rs = stmt.executeQuery(query);
-            if (rs != null && rs.next()) {
+            if ((rs != null && rs.next())&& rs.getString(7).equals("Pending")) {
                 p.setId_pesanan(rs.getInt(1));
                 p.setAlamat_asal(rs.getString(3));
                 p.setAlamat_tujuan(rs.getString(4));
                 p.setTarif(rs.getInt(5));
-            return p;
+                return p;
+            }else{
+                return null;
             }     
         }catch(java.lang.NullPointerException ea){
             System.err.println("ID tidak ditemukan");
